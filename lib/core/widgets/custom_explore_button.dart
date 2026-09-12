@@ -13,7 +13,7 @@ class CustomExploreButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SafeArea(
         child: FilledButton(
-          onPressed: () {},
+          onPressed: onPressed,
           style: FilledButton.styleFrom(
             backgroundColor: AppColors.red,
             foregroundColor: AppColors.white,
