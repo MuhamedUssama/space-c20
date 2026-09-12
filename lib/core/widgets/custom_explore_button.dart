@@ -12,6 +12,7 @@ class CustomExploreButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SafeArea(
+        top: false,
         child: FilledButton(
           onPressed: onPressed,
           style: FilledButton.styleFrom(
@@ -25,7 +26,7 @@ class CustomExploreButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: .spaceBetween,
             children: [
-              Text('Explore', style: AppTextStyles.buttonTitleStyle),
+              Text(text, style: AppTextStyles.buttonTitleStyle),
               const Icon(Icons.arrow_forward, size: 26),
             ],
           ),
