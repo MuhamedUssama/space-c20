@@ -4,6 +4,7 @@ import 'package:space_app/core/utils/app_colors.dart';
 import 'package:space_app/core/utils/app_text_styles.dart';
 import 'package:space_app/core/widgets/custom_explore_button.dart';
 import 'package:space_app/core/widgets/moon_header_widget.dart';
+import 'package:space_app/screens/planet_deatils_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home-screen';
@@ -35,7 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.black,
       body: Column(
         children: [
-          const MoonHeaderWidget(),
+          const MoonHeaderWidget(
+            title: 'Explore',
+            subTitle: 'Which planet\nwould you like to explore?',
+          ),
           Expanded(
             child: PageView.builder(
               controller: _controller,
@@ -95,8 +99,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
           const SizedBox(height: 36),
           CustomExploreButton(
-            text: 'Expolre ${Planet.planets[currentPage].name}',
-            onPressed: () {},
+            text: 'Explore ${Planet.planets[currentPage].name}',
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                PlanetDeatilsScreen.routeName,
+                arguments: Planet.planets[currentPage],
+              );
+            },
           ),
         ],
       ),
