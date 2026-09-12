@@ -4,7 +4,16 @@ import 'package:space_app/core/utils/app_colors.dart';
 import 'package:space_app/core/utils/app_text_styles.dart';
 
 class MoonHeaderWidget extends StatelessWidget {
-  const new({super.key});
+  final String title;
+  final String subTitle;
+  final bool isDetailsScreen;
+
+  const new({
+    super.key,
+    required this.title,
+    required this.subTitle,
+    this.isDetailsScreen = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +38,34 @@ class MoonHeaderWidget extends StatelessWidget {
                   crossAxisAlignment: .stretch,
                   children: [
                     Text(
-                      'Explore',
+                      title,
                       style: AppTextStyles.bodyMeduim,
                       textAlign: .center,
                     ),
                     Text(
-                      'Which planet\nwould you like to explore?',
+                      subTitle,
                       style: AppTextStyles.bodyMeduim,
                       textAlign: .left,
                     ),
                   ],
                 ),
               ),
+            ),
+          ),
+        ),
+
+        Visibility(
+          visible: isDetailsScreen,
+          child: SafeArea(
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: IconButton.styleFrom(
+                backgroundColor: AppColors.red,
+                foregroundColor: AppColors.white,
+              ),
+              icon: const Icon(Icons.arrow_back),
             ),
           ),
         ),
